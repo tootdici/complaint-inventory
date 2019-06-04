@@ -1,4 +1,4 @@
-export class Complaintnant {
+export class Complaint {
     id: string;
     name: string;
     family_name: string;

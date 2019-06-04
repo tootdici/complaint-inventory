@@ -3,21 +3,25 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
+import { ComplaintComponent } from './complaint/complaint.component';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { ComplaintService } from './complaint/complaint.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ComplaintComponent,
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AngularFirestoreModule, ComplaintService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
