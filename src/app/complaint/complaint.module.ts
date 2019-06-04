@@ -5,13 +5,16 @@ import { ComplaintComponent } from './complaint.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AddComplaintComponent } from './add-complaint/add-complaint.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ComplaintComponent],
+  declarations: [ComplaintComponent, AddComplaintComponent],
   imports: [
     CommonModule,
     AppModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    ReactiveFormsModule,
     AngularFireDatabaseModule,
   ]
 })

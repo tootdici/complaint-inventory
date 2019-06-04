@@ -1,16 +1,19 @@
-<p>
-  complaint works!
-</p>
-<div *ngFor="let complaint of complaint">
-  <p>{{complaint.id}}</p>
-  <p>{{complaint.name}}</p>
-  <p>{{complaint.family_name}}</p>
-  <p>{{complaint.address}}</p>
-  <p>{{complaint.date}}</p>
-  <p>{{complaint.time}}</p>
-  <button type="button" (click)="deleteComplaint(complaint.id)">delete</button>
-</div>
-<button (click)="createComplaint()">create complaint</button>
-<div class="col-lg-12">
-  <button type="button">piste</button>
+<div class="container">
+  <table class="table table-light">
+    <thead class="thead-light">
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let complaint of complaint">
+        <td>{{ complaint.name }}</td>
+        <td>{{ complaint.date }}</td>
+        <td><button type="button" class="btn btn-danger" (click)="deleteComplaint(complaint.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="createComplaint()">create complaint</button> 
 </div>

@@ -26,7 +26,7 @@ export class ComplaintComponent implements OnInit {
 
   createComplaint() {
     let obj = {'name': 'karl', 'family_name': 'kangleon', 'address': 'banawa', 'time': '4:42pm', 'date': '06/04/2019', 'complaint': 'g send akong nudes piste'};
-    this.fireStore.collection('complaint').add(obj);
+    
   }
 
   deleteComplaint(id: any) {

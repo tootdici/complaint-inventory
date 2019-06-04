@@ -13,7 +13,7 @@ export class ComplaintService {
     return this.firestore.collection('complaint').snapshotChanges();
   }
 
-  createComplaint(complaint: Complaint) {
+  createComplaint(complaint: any) {
     return this.firestore.collection('complaint').add(complaint);
   }
 
