@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ComplaintService } from './complaint.service';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Complaint } from '../model/complaint.model';
+import { Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-complaint',
@@ -11,25 +11,26 @@ import { Complaint } from '../model/complaint.model';
 export class ComplaintComponent implements OnInit {
 
   complaint: Complaint[];
-  constructor(private complaintService: ComplaintService, private fireStore: AngularFirestore) { }
+  subscriber =  new Subscriber();
+  constructor(private complaintService: ComplaintService){}
 
   ngOnInit() {
-    this.complaintService.getComplaint().subscribe(data => {
+    this.subscriber.add(
+      this.complaintService.getComplaint().subscribe(data => {
       this.complaint = data.map(e => {
         return {
           id: e.payload.doc.id,
           ...e.payload.doc.data()
         } as Complaint;
       })
-    });
-  }
-
-  createComplaint() {
-    let obj = {'name': 'karl', 'family_name': 'kangleon', 'address': 'banawa', 'time': '4:42pm', 'date': '06/04/2019', 'complaint': 'g send akong nudes piste'};
-    
+    }));
   }
 
   deleteComplaint(id: any) {
     this.complaintService.deleteComplaint(id);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriber.unsubscribe();
   }
 }
