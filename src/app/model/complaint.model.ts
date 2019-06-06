@@ -3,7 +3,6 @@ export class Complaint {
     name: string;
     family_name: string;
     address: string;
-    date: string;
-    time: string;
+    date_and_time: string;
     complaint: string;
 }

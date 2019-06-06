@@ -7,9 +7,10 @@ import { environment } from 'src/environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AddComplaintComponent } from './add-complaint/add-complaint.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ViewComplaintComponent } from './view-complaint/view-complaint.component';
 
 @NgModule({
-  declarations: [ComplaintComponent, AddComplaintComponent],
+  declarations: [ComplaintComponent, AddComplaintComponent, ViewComplaintComponent],
   imports: [
     CommonModule,
     AppModule,

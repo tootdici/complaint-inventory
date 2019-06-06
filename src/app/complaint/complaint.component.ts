@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ComplaintService } from './complaint.service';
 import { Complaint } from '../model/complaint.model';
 import { Subscriber } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-complaint',
@@ -12,7 +13,7 @@ export class ComplaintComponent implements OnInit {
 
   complaint: Complaint[];
   subscriber =  new Subscriber();
-  constructor(private complaintService: ComplaintService){}
+  constructor(private complaintService: ComplaintService, private router: Router){}
 
   ngOnInit() {
     this.subscriber.add(
@@ -28,6 +29,10 @@ export class ComplaintComponent implements OnInit {
 
   deleteComplaint(id: any) {
     this.complaintService.deleteComplaint(id);
+  }
+
+  viewComplaint(id: any) {
+    this.router.navigate([`/view-complaint/${id}`]);
   }
 
   ngOnDestroy(): void {

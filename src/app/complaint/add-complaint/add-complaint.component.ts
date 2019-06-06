@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ComplaintService } from '../complaint.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-complaint',
@@ -13,7 +13,7 @@ export class AddComplaintComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
      private complaintService: ComplaintService,
-     private fireStore: AngularFirestore) { }
+     private router: Router) { }
 
   ngOnInit() {
     this.createForm();
@@ -24,14 +24,16 @@ export class AddComplaintComponent implements OnInit {
       name: [''],
       family_name: [''],
       address: [''],
-      date: [''],
-      time: [''],
+      date_and_time: [''],
       complaint: ['']
     })
   }
 
-  private submit() {
-    this.complaintService.createComplaint(this.complaintForm.value);
+  submit() {
+    this.complaintService.createComplaint(this.complaintForm.value).finally(()=> {
+      this.router.navigateByUrl("/complaint");
+    });
+    
   }
 
 }

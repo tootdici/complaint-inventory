@@ -11,12 +11,14 @@ import { ComplaintService } from './complaint/complaint.service';
 import { HeaderComponent } from './shared/header/header.component';
 import { AddComplaintComponent } from './complaint/add-complaint/add-complaint.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ViewComplaintComponent } from './complaint/view-complaint/view-complaint.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ComplaintComponent,
     AddComplaintComponent,
+    ViewComplaintComponent,
     HeaderComponent,
   ],
   imports: [
