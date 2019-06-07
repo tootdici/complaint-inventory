@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-jejemon-converter',
@@ -8,27 +9,34 @@ import { Component, OnInit } from '@angular/core';
 export class JejemonConverterComponent implements OnInit {
   toJejemon: string;
   finalJejemon: string = '';
+  jejeImageUrl: any = null;
+  isLoading: boolean = false;
+
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   convertToJejemon() {
-    var splitText = this.toJejemon.split(' ');
+    if (this.toJejemon) {
+      var splitText = this.toJejemon.split(' ');
     
-    splitText.forEach((value: any, index1: any) => {
-      var splitValue = value.split('');
-      splitValue.forEach((element: any, index2: any) => {
-        var jeje = this.jejeLetterChanger(element);
-        if (index2 % 2 == 0) {
-          splitValue[index2] =  jeje.toLowerCase();
-        } else {
-          splitValue[index2] = jeje.toUpperCase();
-        }
+      splitText.forEach((value: any, index1: any) => {
+        var splitValue = value.split('');
+        splitValue.forEach((element: any, index2: any) => {
+          var jeje = this.jejeLetterChanger(element);
+          if (index2 % 2 == 0) {
+            splitValue[index2] =  jeje.toLowerCase();
+          } else {
+            splitValue[index2] = jeje.toUpperCase();
+          }
+        });
+        splitText[index1] = splitValue.join('');
       });
-      splitText[index1] = splitValue.join('');
-    });
-    this.finalJejemon = splitText.join(' ');
+        this.finalJejemon = splitText.join(' ');
+    } else {
+      // alert('INPUT SAD DHA OYYYYYYYYYYYYYYYYYYYY');
+      console.log("gi atay. ga tuo gurog walay alert ay")
+    }
   }
 
   jejeLetterChanger(value: any) {
@@ -40,6 +48,19 @@ export class JejemonConverterComponent implements OnInit {
     } else {
       return toConvert;
     }
+  }
+
+  jejemonLoader() {
+    var piste = interval(300);
+    piste.subscribe((value: any) => {
+      if (value++ < 7) {
+        this.jejeImageUrl = `/assets/jeje-images/${value}.jpg`;
+        this.isLoading = true;
+        console.log(this.jejeImageUrl);
+      } else {
+        this.isLoading = false;
+      }
+    })
   }
 
 }
