@@ -32,16 +32,4 @@ export class ViewComplaintComponent implements OnInit {
      this.isDone = true;
    })
   }
-
-
-//   this.shirtCollection = afs.collection<Shirt>('shirts');
-// this.shirts = this.shirtCollection.snapshotChanges().pipe(
-//     map(actions => {
-//     return actions.map(a => {
-//         const data = a.payload.doc.data() as Shirt;
-//         const id = a.payload.doc.id;
-//         return { id, ...data };
-//     });
-//     })
-// );
 }

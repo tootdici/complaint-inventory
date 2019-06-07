@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="col-lg-12">
+    <label>Convert your sayings to JEJE</label>
+    <textarea [(ngModel)]="toJejemon" row="20" cols="100"></textarea>
+  </div>
+  <div class="col-lg-12">
+    <button type="button" class="btn btn-primary" (click)="convertToJejemon()">to Jejemon</button>
+    <span>{{ finalJejemon }}</span>
+  </div>
+</div>

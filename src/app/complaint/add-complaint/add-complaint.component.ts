@@ -33,7 +33,6 @@ export class AddComplaintComponent implements OnInit {
     this.complaintService.createComplaint(this.complaintForm.value).finally(()=> {
       this.router.navigateByUrl("/complaint");
     });
-    
   }
 
 }

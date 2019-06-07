@@ -6,7 +6,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AddComplaintComponent } from './add-complaint/add-complaint.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ViewComplaintComponent } from './view-complaint/view-complaint.component';
 
 @NgModule({
@@ -17,6 +17,7 @@ import { ViewComplaintComponent } from './view-complaint/view-complaint.componen
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ReactiveFormsModule,
     AngularFireDatabaseModule,
+    FormsModule
   ]
 })
 export class ComplaintModule { }
