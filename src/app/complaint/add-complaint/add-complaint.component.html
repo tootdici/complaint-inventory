@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="complaintForm" (ngsubmit)="submit()">
+  <form [formGroup]="complaintForm" (submit)="submit()">
     <div class="col-lg-12">
       <label>Name:</label>
       <input class="form-control" type="text" formControlName='name' required>
