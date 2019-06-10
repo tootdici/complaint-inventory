@@ -45,8 +45,6 @@ export class JejemonConverterComponent implements OnInit {
       return '3';
     } else if (toConvert.toLowerCase() === 'o') {
       return '0';
-    } else if (toConvert.toLowerCase() === 'n') {
-      return '6';
     } else if (toConvert.toLowerCase() === 'a') {
       return '4';
     } else if (toConvert.toLowerCase() === 'i') {
